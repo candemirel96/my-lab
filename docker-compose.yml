@@ -1,0 +1,17 @@
+name: my-lab
+
+services:
+  web:
+    image: nginx:alpine
+    container_name: my-lab-web
+    ports:
+      - "18080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  api:
+    image: traefik/whoami
+    container_name: my-lab-api
+    ports:
+      - "18081:80"
